@@ -106,6 +106,40 @@ body {
   padding: 0 20px;
 }
 
+/* -------------------- */
+/* HERO – MOBILE */
+/* -------------------- */
+
+@media (max-width: 767px) {
+
+  .hero {
+    background: url("img/1.png") no-repeat center/cover;
+    height: 90vh;
+  }
+
+  .hero-emb {
+    background: url("img/2.png") no-repeat center/cover;
+    height: 90vh;
+  }
+
+  .hero-mat {
+    background: url("img/3.png") no-repeat center/cover;
+    height: 90vh;
+  }
+
+  .hero-com {
+    background: url("img/4.png") no-repeat center/cover;
+    height: 90vh;
+  }
+
+  .hero-tie {
+    background: url("img/5.png") no-repeat center/cover;
+    height: 90vh;
+  }
+
+}
+
+
 .hero h2 {
   font-size: 42px;
   color: #9f2b68;
