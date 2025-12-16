@@ -68,10 +68,10 @@ document.querySelectorAll(".nav-links a").forEach(link =>
 // Inicialización
 // updateSlider();
 
+/* ------------------------------- */
+/* FAQ – ACORDEÓN */
+/* ------------------------------- */
 
-/* ------------------------------- */
-/* FAQ (ACORDEÓN) */
-/* ------------------------------- */
 const accordions = document.querySelectorAll(".accordion-item");
 
 accordions.forEach(item => {
@@ -81,18 +81,43 @@ accordions.forEach(item => {
   btn.addEventListener("click", () => {
     const isOpen = btn.getAttribute("aria-expanded") === "true";
 
-    // cerrar todos
     accordions.forEach(i => {
       i.classList.remove("active");
       i.querySelector(".accordion-toggle").setAttribute("aria-expanded", "false");
       i.querySelector(".accordion-panel").style.maxHeight = null;
     });
 
-    // si estaba cerrado, abrirlo
     if (!isOpen) {
       item.classList.add("active");
       btn.setAttribute("aria-expanded", "true");
       panel.style.maxHeight = panel.scrollHeight + "px";
     }
+  });
+});
+
+/* ------------------------------- */
+/* FAQ – FILTROS */
+/* ------------------------------- */
+
+const filtroBtns = document.querySelectorAll(".filtro-btn");
+
+filtroBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const categoria = btn.dataset.categoria;
+
+    filtroBtns.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    accordions.forEach(item => {
+      item.classList.remove("active");
+      item.querySelector(".accordion-toggle").setAttribute("aria-expanded", "false");
+      item.querySelector(".accordion-panel").style.maxHeight = null;
+
+      if (categoria === "todas" || item.dataset.categoria === categoria) {
+        item.style.display = "block";
+      } else {
+        item.style.display = "none";
+      }
+    });
   });
 });

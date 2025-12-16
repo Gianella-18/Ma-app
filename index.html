@@ -232,44 +232,159 @@
 <!-- FAQ -->
 <section id="faq" class="faq">
     <div class="container">
-      <h2 style="
-      text-align: center; padding: 28px;">Preguntas frecuentes</h2>
-
-<div class="faq-categorias text-center mb-4">
-    <button class="btn btn-outline-primary me-2 filtro-btn active" data-categoria="todas">Todas</button>
-    <button class="btn btn-outline-primary me-2 filtro-btn" data-categoria="comunidad">Comunidad</button>
-    <button class="btn btn-outline-primary me-2 filtro-btn" data-categoria="tienda">Tienda</button>
-    <button class="btn btn-outline-primary me-2 filtro-btn" data-categoria="pagos">Pagos</button>
-  </div>
-
+      <h2 style="text-align: center; padding: 28px;">Preguntas frecuentes</h2>
+  
+      <div class="faq-categorias text-center mb-4">
+        <button class="btn filtro-btn active" data-categoria="todas">Todas</button>
+        <button class="btn filtro-btn" data-categoria="comunidad">Comunidad</button>
+        <button class="btn filtro-btn" data-categoria="tienda">Tienda</button>
+        <button class="btn filtro-btn" data-categoria="pagos">Pagos</button>
+      </div>
+  
       <div class="accordion" id="faq-accordion">
-        <div class="accordion-item">
-          <button class="accordion-toggle" aria-expanded="false">¿Cómo puedo comprar productos?</button>
-          <div class="accordion-panel" style="max-height: 120rem;">Navegá por la tienda, filtrá por categoría, agregá productos al carrito y finalizá tu compra en pocos pasos. ¡Rápido y fácil!</div>
-        </div>
+  
+        <div class="accordion-item" data-categoria="tienda">
+            <button class="accordion-toggle" aria-expanded="false">
+              ¿Cómo puedo comprar productos?
+            </button>
+            <div class="accordion-panel">
+              Navegá por la tienda, filtrá por categoría, agregá productos al carrito y finalizá tu compra en pocos pasos. ¡Rápido y fácil!
+            </div>
+          </div>
+          
+          <div class="accordion-item" data-categoria="tienda">
+            <button class="accordion-toggle" aria-expanded="false">
+              ¿Cómo puedo vender productos que ya no uso?
+            </button>
+            <div class="accordion-panel">
+              Desde tu perfil podés subir fotos, precios y detalles del producto. Nuestro equipo revisará y publicará los productos en la tienda.
+            </div>
+          </div>
+          
+          <div class="accordion-item" data-categoria="tienda">
+            <button class="accordion-toggle" aria-expanded="false">
+              ¿Qué tipo de productos puedo encontrar en la tienda?
+            </button>
+            <div class="accordion-panel">
+              Vas a encontrar productos nuevos y usados relacionados con el embarazo, la maternidad y la crianza, como ropa, accesorios y artículos esenciales para bebés.
+            </div>
+          </div>
+          
+          <div class="accordion-item" data-categoria="tienda">
+            <button class="accordion-toggle" aria-expanded="false">
+              ¿Los productos se revisan antes de publicarse?
+            </button>
+            <div class="accordion-panel">
+              Sí, todos los productos pasan por una revisión previa para verificar que cumplan con las condiciones y la información detallada antes de ser publicados.
+            </div>
+          </div>
+          
+          <div class="accordion-item" data-categoria="tienda">
+            <button class="accordion-toggle" aria-expanded="false">
+              ¿Puedo contactar a la vendedora antes de comprar?
+            </button>
+            <div class="accordion-panel">
+              Sí, desde la plataforma podés comunicarte para resolver dudas sobre el producto antes de concretar la compra.
+            </div>
+          </div>
 
-        <div class="accordion-item">
-          <button class="accordion-toggle" aria-expanded="false">¿Cómo puedo vender productos que ya no uso?</button>
-          <div class="accordion-panel" style="max-height: 120rem;">Desde tu perfil podés subir fotos, precios y detalles del producto. Nuestro equipo revisará y publicará los productos en la tienda.</div>
-        </div>
+          
+          <div class="accordion-item" data-categoria="pagos">
+            <button class="accordion-toggle" aria-expanded="false">
+              ¿Es seguro comprar y vender en <strong style="color:#a1bea0">Ma!</strong>?
+            </button>
+            <div class="accordion-panel">
+              Sí, priorizamos la seguridad de todas las personas usuarias. Los perfiles están verificados y los pagos se realizan mediante plataformas seguras.
+            </div>
+          </div>
+          
+          <div class="accordion-item" data-categoria="pagos">
+            <button class="accordion-toggle" aria-expanded="false">
+              ¿Qué medios de pago están disponibles?
+            </button>
+            <div class="accordion-panel">
+              Podés pagar con los medios habilitados en la plataforma, como tarjetas de débito, crédito u otras opciones seguras según disponibilidad.
+            </div>
+          </div>
+          
+          <div class="accordion-item" data-categoria="pagos">
+            <button class="accordion-toggle" aria-expanded="false">
+              ¿Qué pasa si el producto que recibo está en mal estado?
+            </button>
+            <div class="accordion-panel">
+              Podés contactarnos inmediatamente. Revisamos cada caso y, si corresponde, realizamos una devolución o reembolso.
+            </div>
+          </div>
+          
+          <div class="accordion-item" data-categoria="pagos">
+            <button class="accordion-toggle" aria-expanded="false">
+              ¿Se pueden hacer cambios o devoluciones?
+            </button>
+            <div class="accordion-panel">
+              Al tratarse de productos usados y únicos, no se aceptan cambios ni devoluciones, salvo que el producto no coincida con lo publicado.
+            </div>
+          </div>
+          
+          <div class="accordion-item" data-categoria="pagos">
+            <button class="accordion-toggle" aria-expanded="false">
+              ¿Cuándo recibe el pago la persona vendedora?
+            </button>
+            <div class="accordion-panel">
+              El pago se libera una vez confirmada la entrega del producto y verificado que todo esté en condiciones.
+            </div>
+          </div>
 
-        <div class="accordion-item">
-          <button class="accordion-toggle" aria-expanded="false">¿Es seguro comprar y vender en <strong style="color: #a1bea0">Ma!</strong> ?</button>
-          <div class="accordion-panel" style="max-height: 120rem;">Sí, priorizamos la seguridad de todas las personas usuarias. Los perfiles están verificados, los pagos son procesados por plataformas seguras y se fomenta la comunicación clara para coordinar entregas seguras.</div>
-        </div>
-
-        <div class="accordion-item">
-          <button class="accordion-toggle" aria-expanded="false">¿Qué pasa si el producto que recibo está en mal estado?</button>
-          <div class="accordion-panel" style="max-height: 120rem;">Podés contactarnos inmediatamente. Revisamos cada caso y, si corresponde, realizamos una devolución o reembolso. Te pedimos que adjuntes fotos del producto recibido.</div>
-        </div>
-
-        <div class="accordion-item">
-          <button class="accordion-toggle" aria-expanded="false">¿Se pueden hacer cambios o devoluciones?</button>
-          <div class="accordion-panel" style="max-height: 120rem;">Al tratarse de productos usados y únicos, recomendamos leer bien la descripción antes de comprar. No se aceptan cambios ni devoluciones, salvo que el producto recibido no coincida con lo publicado.</div>
-        </div>
+          
+          <div class="accordion-item" data-categoria="comunidad">
+            <button class="accordion-toggle" aria-expanded="false">
+              ¿De qué se trata la comunidad de <strong style="color:#a1bea0">Ma!</strong>?
+            </button>
+            <div class="accordion-panel">
+              Es un espacio pensado para informarte, compartir experiencias y conectar con otras personas que transitan el embarazo, la maternidad o la crianza.
+            </div>
+          </div>
+          
+          <div class="accordion-item" data-categoria="comunidad">
+            <button class="accordion-toggle" aria-expanded="false">
+              ¿Necesito registrarme para participar de la comunidad?
+            </button>
+            <div class="accordion-panel">
+              Sí, el registro es necesario para interactuar, publicar contenido y participar de forma activa dentro de la comunidad.
+            </div>
+          </div>
+          
+          <div class="accordion-item" data-categoria="comunidad">
+            <button class="accordion-toggle" aria-expanded="false">
+              ¿Puedo hacer consultas o pedir recomendaciones?
+            </button>
+            <div class="accordion-panel">
+              Claro que sí. Podés hacer preguntas, pedir consejos y compartir experiencias con otras personas de la comunidad.
+            </div>
+          </div>
+          
+          <div class="accordion-item" data-categoria="comunidad">
+            <button class="accordion-toggle" aria-expanded="false">
+              ¿La comunidad está moderada?
+            </button>
+            <div class="accordion-panel">
+              Sí, contamos con moderación para garantizar un espacio respetuoso, seguro y confiable para todas las personas usuarias.
+            </div>
+          </div>
+          
+          <div class="accordion-item" data-categoria="comunidad">
+            <button class="accordion-toggle" aria-expanded="false">
+              ¿Puedo reportar contenido inapropiado?
+            </button>
+            <div class="accordion-panel">
+              Sí, si detectás contenido inapropiado podés reportarlo y nuestro equipo lo revisará a la brevedad.
+            </div>
+          </div>
+          
+  
       </div>
     </div>
   </section>
+  
 
     <!-- FOOTER FINAL -->
     <footer class="bg-light pt-4 mt-5 footer">
