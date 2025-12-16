@@ -414,6 +414,18 @@ body {
   padding: 20px;
 }
 
+/* -------------------- */
+/* HERO – MOBILE */
+/* -------------------- */
+
+@media (max-width: 767px) {
+  .about-flex {
+    display: grid;
+    gap: 1.5rem;   /* 🔥 más cerca sin tocar el resto */
+    padding: 20px;
+  }
+}
+
 
 .about-text h3 {
   margin-bottom: 10px;
