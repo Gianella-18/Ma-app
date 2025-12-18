@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../css/admin.css">
+  </head>
+  <body>
+  
+    <header class="admin-header">
+      <h2>Panel de Administración</h2>
+      <button onclick="logout()">Cerrar sesión</button>
+    </header>
+  
+    <section class="admin-info">
+      <p id="admin-name"></p>
+    </section>
+  
+    <section class="admin-actions">
+      <div class="admin-card">
+        <h3>Administrar comunidad</h3>
+        <p>Gestionar publicaciones y usuarias</p>
+      </div>
+  
+      <div class="admin-card">
+        <h3>Editar productos</h3>
+        <p>Alta, baja y modificación de productos</p>
+      </div>
+  
+      <div class="admin-card">
+        <h3>Ver usuarios</h3>
+        <p>Listado de usuarias registradas</p>
+      </div>
+    </section>
+  
+    <script src="../js/session.js"></script>
+    <script src="../js/requireAdmin.js"></script>
+    <script src="../js/admin.js"></script>
+    <script>
+      requireAdmin();
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,37 @@
+body {
+    font-family: Poppins, sans-serif;
+    background: #f8f9fa;
+  }
+  
+  .admin-header {
+    background: #9f2b68;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .admin-header button {
+    background: #fff;
+    color: #9f2b68;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  
+  .admin-actions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    padding: 40px 5%;
+  }
+  
+  .admin-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px #00000015;
+  }
+  
