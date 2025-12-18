@@ -55,3 +55,45 @@ function renderCart() {
 window.onclick = e => {
     if (e.target === cartModal) cartModal.style.display = "none";
 };
+
+
+
+
+/* tienda.js */
+
+import { getSession } from "./session.js";
+
+const user = getSession();
+
+if (!user) {
+  window.location.href = "../auth.html";
+}
+
+/* Carrito */
+
+function addToCart(product) {
+  cart.push(product);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
+}
+
+function updateCartCount() {
+  const count = document.querySelector(".cart-count");
+  if (count) count.textContent = cart.length;
+}
+
+/* Botones agregar */
+document.querySelectorAll(".btn-agregar").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const card = btn.closest(".producto-card");
+
+    const product = {
+      title: card.querySelector(".titulo-producto").textContent,
+      price: card.querySelector(".precio").textContent
+    };
+
+    addToCart(product);
+  });
+});
+
+updateCartCount();
