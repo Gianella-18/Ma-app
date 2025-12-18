@@ -1,45 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="../css/admin.css">
-  </head>
-  <body>
-  
-    <header class="admin-header">
-      <h2>Panel de Administración</h2>
-      <button onclick="logout()">Cerrar sesión</button>
-    </header>
-  
-    <section class="admin-info">
-      <p id="admin-name"></p>
+  <meta charset="UTF-8">
+  <title>Panel de Administración | Má!</title>
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body>
+
+  <!-- Seguridad -->
+  <script src="../js/session.js"></script>
+  <script src="../js/requireAdmin.js"></script>
+  <script>
+    requireAdmin();
+  </script>
+
+  <!-- Header -->
+  <header class="admin-header">
+    <h1>Panel de Administración</h1>
+    <button onclick="logout()">Cerrar sesión</button>
+  </header>
+
+  <!-- Navegación -->
+  <nav class="admin-nav">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="comunidad.html">Comunidad</a>
+    <a href="productos.html">Tienda</a>
+    <a href="usuarios.html">Usuarias</a>
+  </nav>
+  <p>Hola, Administrador</p>
+
+  <!-- Contenido -->
+  <main class="admin-content">
+    <section class="admin-cards">
+
+      <div class="card">
+        <h3>Comunidad</h3>
+        <p>Gestionar publicaciones, comentarios y reportes</p>
+      </div>
+
+      <div class="card">
+        <h3>Tienda</h3>
+        <p>Editar productos, precios y stock</p>
+      </div>
+
+      <div class="card">
+        <h3>Usuarias</h3>
+        <p>Administrar cuentas y roles</p>
+      </div>
+
     </section>
-  
-    <section class="admin-actions">
-      <div class="admin-card">
-        <h3>Administrar comunidad</h3>
-        <p>Gestionar publicaciones y usuarias</p>
-      </div>
-  
-      <div class="admin-card">
-        <h3>Editar productos</h3>
-        <p>Alta, baja y modificación de productos</p>
-      </div>
-  
-      <div class="admin-card">
-        <h3>Ver usuarios</h3>
-        <p>Listado de usuarias registradas</p>
-      </div>
-    </section>
-  
-    <script src="../js/session.js"></script>
-    <script src="../js/requireAdmin.js"></script>
-    <script src="../js/admin.js"></script>
-    <script>
-      requireAdmin();
-    </script>
-    
+  </main>
+
 </body>
 </html>

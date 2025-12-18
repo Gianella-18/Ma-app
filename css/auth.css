@@ -1,63 +1,101 @@
-body{
-    background: #f7f4fb;
+body {
+  background: #f7f4fb;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
 }
 
+/* Contenedor */
 .auth-container {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Card */
+.auth-card {
+  background: #ffffff;
+  padding: 32px 28px;
+  width: 100%;
+  max-width: 380px;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px #00000018;
+}
+
+/* Título */
+.auth-card h2 {
+  text-align: center;
+  margin-bottom: 22px;
+  color: #9f2b68;
+}
+
+/* Toggle */
+.auth-toggle {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 22px;
+}
+
+.auth-toggle button {
+  flex: 1;
+  padding: 10px 0;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  background: #f0f0f0;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.auth-toggle button.active {
+  background: #9f2b68;
+  color: #ffffff;
+  border-color: #9f2b68;
+}
+
+.auth-toggle button:hover:not(.active) {
+  background: #e5e5e5;
+}
+
+/* Inputs */
+.auth-card input,
+.auth-card select {
+  width: 100%;
+  padding: 11px 12px;
+  margin-bottom: 16px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.auth-card input:focus,
+.auth-card select:focus {
+  outline: none;
+  border-color: #9f2b68;
+}
+
+/* Botón */
+.btn-primary {
+  width: 100%;
+  padding: 12px;
+  background: #9f2b68;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 5px;
+  transition: background 0.3s;
+}
+
+.btn-primary:hover {
+  background: #a1bea0;
+}
+
+/* Responsive */
+@media (max-width: 420px) {
   .auth-card {
-    background: #fff;
-    padding: 30px;
-    width: 100%;
-    max-width: 380px;
-    border-radius: 16px;
-    box-shadow: 0 8px 20px #00000015;
+    padding: 26px 22px;
   }
-  
-  .auth-card h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .auth-toggle {
-    display: flex;
-    margin-bottom: 20px;
-  }
-  
-  .auth-toggle button {
-    flex: 1;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    cursor: pointer;
-    background: #eee;
-  }
-  
-  .auth-toggle button.active {
-    background: #baa1de;
-    color: #fff;
-  }
-  
-  .auth-card input,
-  .auth-card select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-  }
-  
-  .btn-primary {
-    width: 100%;
-    padding: 12px;
-    background: #9f2b68;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-  }
-  
+}

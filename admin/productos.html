@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Administrar Tienda | Má!</title>
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body>
+
+  <!-- Seguridad -->
+  <script src="../js/session.js"></script>
+  <script src="../js/requireAdmin.js"></script>
+  <script>
+    requireAdmin();
+  </script>
+
+  <!-- Header -->
+  <header class="admin-header">
+    <h1>Tienda</h1>
+    <button onclick="logout()">Cerrar sesión</button>
+  </header>
+
+  <!-- Nav -->
+  <nav class="admin-nav">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="comunidad.html">Comunidad</a>
+    <a href="productos.html">Tienda</a>
+    <a href="usuarios.html">Usuarias</a>
+  </nav>
+
+  <!-- Content -->
+  <main class="admin-content">
+
+    <h2 class="section-title">Administrar productos</h2>
+
+    <!-- Formulario -->
+    <form id="producto-form" class="admin-form">
+      <div class="form-group">
+        <label>Nombre del producto</label>
+        <input type="text" id="nombre" required>
+      </div>
+
+      <div class="form-group">
+        <label>Precio</label>
+        <input type="number" id="precio" required>
+      </div>
+
+      <button type="submit" class="btn-primary">Agregar producto</button>
+    </form>
+
+    <!-- Productos -->
+    <div id="productos-container" class="productos-container"></div>
+
+  </main>
+
+  <script>
+    const productos = JSON.parse(localStorage.getItem("productos")) || [];
+    const container = document.getElementById("productos-container");
+
+    function render() {
+      container.innerHTML = "";
+
+      if (productos.length === 0) {
+        container.innerHTML = "<p>No hay productos cargados.</p>";
+        return;
+      }
+
+      productos.forEach((p, i) => {
+        const card = document.createElement("div");
+        card.className = "producto-card";
+
+        card.innerHTML = `
+          <div class="producto-info">
+            <strong>${p.nombre}</strong>
+            <span>$${p.precio}</span>
+          </div>
+          <button class="btn-danger" onclick="borrar(${i})">Eliminar</button>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    render();
+
+    document.getElementById("producto-form").addEventListener("submit", e => {
+      e.preventDefault();
+
+      productos.push({
+        nombre: nombre.value,
+        precio: precio.value
+      });
+
+      localStorage.setItem("productos", JSON.stringify(productos));
+      render();
+      e.target.reset();
+    });
+
+    function borrar(i) {
+      if (!confirm("¿Eliminar este producto?")) return;
+      productos.splice(i, 1);
+      localStorage.setItem("productos", JSON.stringify(productos));
+      render();
+    }
+  </script>
+
+</body>
+</html>

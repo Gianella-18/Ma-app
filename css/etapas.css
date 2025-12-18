@@ -1,0 +1,109 @@
+/* -------------------- */
+/* ESTILOS GENERALES */
+/* Embarazo + Maternidad */
+/* -------------------- */
+
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: #f7f4fb;
+    color: #333;
+  }
+  
+  /* Header */
+  
+  .main-header {
+    background: #baa1de;
+    color: #fff;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .main-header h1 {
+    margin: 0;
+    font-size: 1.6rem;
+  }
+  
+  .main-header nav a {
+    color: #fff;
+    margin-left: 16px;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .main-header nav a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Contenedor principal */
+  
+  .embarazo-container,
+  .maternidad-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  
+  /* Intro */
+  
+  .intro {
+    background: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px #00000010;
+    margin-bottom: 40px;
+  }
+  
+  .intro h2 {
+    margin-top: 0;
+    color: #9f2b68;
+  }
+  
+  .intro p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  /* Cards */
+  
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+  }
+  
+  .card {
+    background: #fff;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px #00000010;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px #00000015;
+  }
+  
+  .card h3 {
+    margin-top: 0;
+    color: #9f2b68;
+  }
+  
+  .card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  
+  /* Footer */
+  
+  .main-footer {
+    margin-top: 60px;
+    padding: 20px;
+    text-align: center;
+    background: #eee;
+    font-size: 0.9rem;
+  }
+  

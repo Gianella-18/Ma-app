@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Administrar Usuarias | Má!</title>
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body>
+
+<script src="../js/session.js"></script>
+<script src="../js/requireAdmin.js"></script>
+<script>
+  requireAdmin();
+</script>
+
+<header class="admin-header">
+  <h1>Gestión de Usuarias</h1>
+  <button onclick="logout()">Cerrar sesión</button>
+</header>
+
+<nav class="admin-nav">
+  <a href="dashboard.html">Dashboard</a>
+  <a href="comunidad.html">Comunidad</a>
+  <a href="productos.html">Tienda</a>
+  <a href="usuarios.html">Usuarias</a>
+</nav>
+
+<main class="admin-content">
+
+  <h2 class="section-title">Listado de usuarias</h2>
+  <div id="usuarios-container"></div>
+
+</main>
+
+<script>
+  const adminSession = JSON.parse(localStorage.getItem("session"));
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  const container = document.getElementById("usuarios-container");
+
+  function renderUsers() {
+    container.innerHTML = "";
+
+    users.forEach((u, index) => {
+
+      const isAdmin = u.rol === "admin";
+      const isCurrentAdmin = u.email === adminSession.email;
+
+      const card = document.createElement("div");
+      card.className = "usuario-card";
+
+      card.innerHTML = `
+        <div class="usuario-info">
+          <strong>${u.nombre}</strong>
+          <span>${u.email}</span>
+          <small class="rol ${u.rol}">${formatRol(u.rol)}</small>
+        </div>
+
+        <div class="usuario-actions">
+          ${isAdmin
+            ? `<span class="badge-admin">Rol protegido</span>`
+            : `
+              <select onchange="cambiarRol(${index}, this.value)">
+                <option value="usuario" ${u.rol === "usuario" ? "selected" : ""}>Usuario/a</option>
+                <option value="embarazada" ${u.rol === "embarazada" ? "selected" : ""}>Embarazada</option>
+                <option value="mama" ${u.rol === "mama" ? "selected" : ""}>Mamá</option>
+              </select>
+            `
+          }
+
+          ${isAdmin
+            ? ""
+            : `<button class="btn-danger" onclick="eliminarUsuario(${index})">Eliminar</button>`
+          }
+        </div>
+      `;
+
+      container.appendChild(card);
+    });
+  }
+
+  function formatRol(rol) {
+    if (rol === "embarazada") return "Embarazada";
+    if (rol === "mama") return "Mamá";
+    if (rol === "admin") return "Administradora";
+    return "Usuario/a";
+  }
+
+  function cambiarRol(index, nuevoRol) {
+    users[index].rol = nuevoRol;
+    localStorage.setItem("users", JSON.stringify(users));
+    renderUsers();
+  }
+
+  function eliminarUsuario(index) {
+    if (!confirm("¿Seguro que querés eliminar esta usuaria?")) return;
+    users.splice(index, 1);
+    localStorage.setItem("users", JSON.stringify(users));
+    renderUsers();
+  }
+
+  renderUsers();
+</script>
+
+</body>
+</html>

@@ -1,37 +1,393 @@
+/* -------------------- */
+/* ADMIN PANEL - Má! */
+/* -------------------- */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    font-family: Poppins, sans-serif;
-    background: #f8f9fa;
+  font-family: "Poppins", sans-serif;
+  background: #f7f4fb;
+  color: #333;
+}
+
+/* -------------------- */
+/* HEADER */
+/* -------------------- */
+
+.admin-header {
+  background: #9f2b68;
+  color: #fff;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-header h1 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.admin-header button {
+  background: #fff;
+  color: #9f2b68;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background .2s ease;
+}
+
+.admin-header button:hover {
+  background: #f1e6ee;
+}
+
+/* -------------------- */
+/* NAV */
+/* -------------------- */
+
+.admin-nav {
+  background: #ffffff;
+  padding: 12px 40px;
+  display: flex;
+  gap: 20px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.admin-nav a {
+  text-decoration: none;
+  color: #9f2b68;
+  font-weight: 500;
+}
+
+.admin-nav a:hover {
+  text-decoration: underline;
+}
+
+/* -------------------- */
+/* SALUDO */
+/* -------------------- */
+
+p {
+  padding: 20px 40px;
+  font-weight: 500;
+}
+
+/* -------------------- */
+/* CONTENT */
+/* -------------------- */
+
+.admin-content {
+  padding: 20px 40px;
+}
+
+.admin-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* -------------------- */
+/* CARDS */
+/* -------------------- */
+
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 6px 18px #00000012;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  color: #9f2b68;
+  font-size: 18px;
+}
+
+.card p {
+  padding: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 26px #0000001a;
+}
+
+/* -------------------- */
+/* RESPONSIVE */
+/* -------------------- */
+
+@media (max-width: 768px) {
+  .admin-header,
+  .admin-nav,
+  .admin-content,
+  p {
+    padding-left: 20px;
+    padding-right: 20px;
   }
-  
+
   .admin-header {
-    background: #9f2b68;
-    color: #fff;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
   }
-  
-  .admin-header button {
-    background: #fff;
-    color: #9f2b68;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 20px;
-    cursor: pointer;
-  }
-  
-  .admin-actions {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-    padding: 40px 5%;
-  }
-  
-  .admin-card {
-    background: #fff;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px #00000015;
-  }
-  
+}
+
+
+
+
+/* -------------------- */
+/* COMUNIDAD ADMIN */
+/* -------------------- */
+
+.section-title {
+  margin-bottom: 20px;
+  color: #9f2b68;
+}
+
+.posts-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.post-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 6px 18px #00000012;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.post-header {
+  font-size: 14px;
+  color: #9f2b68;
+}
+
+.post-text {
+  font-size: 14px;
+  color: #444;
+}
+
+.btn-danger {
+  align-self: flex-end;
+  background: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 14px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.btn-danger:hover {
+  background: #c82333;
+}
+
+
+
+
+/* -------------------- */
+/* TIENDA ADMIN */
+/* -------------------- */
+
+.admin-form {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px #00000012;
+  max-width: 420px;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  font-size: 13px;
+  margin-bottom: 4px;
+  color: #666;
+}
+
+.form-group input {
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.btn-primary {
+  background: #9f2b68;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 16px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-primary:hover {
+  background: #7d2152;
+}
+
+.productos-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.producto-card {
+  background: #ffffff;
+  padding: 18px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px #00000012;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.producto-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.producto-info span {
+  font-size: 14px;
+  color: #555;
+}
+
+
+
+
+
+/* -------------------- */
+/* USUARIAS ADMIN */
+/* -------------------- */
+
+.usuarios-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.usuario-card {
+  background: #ffffff;
+  padding: 18px 20px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px #00000012;
+  display: flex;
+  align-items: center;
+}
+
+.usuario-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.usuario-info span {
+  font-size: 14px;
+  color: #555;
+}
+
+.usuario-info small {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  width: fit-content;
+  font-weight: 500;
+}
+
+/* Roles */
+.usuario-info .embarazada {
+  background: #baa1de40;
+  color: #6a1b9a;
+}
+
+.usuario-info .mama {
+  background: #b2e0cf60;
+  color: #0f877b;
+}
+
+.usuario-info .usuario {
+  background: #e0e0e0;
+  color: #555;
+}
+
+.usuario-info .admin {
+  background: #9f2b6840;
+  color: #9f2b68;
+}
+
+
+
+
+
+
+
+/* -------------------- */
+/* USUARIAS ADMIN ACCIONES */
+/* -------------------- */
+
+.usuario-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.usuario-actions select {
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 13px;
+}
+
+.btn-danger {
+  background: #d9534f;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btn-danger:hover {
+  background: #c9302c;
+}
+
+
+
+.badge-admin {
+  background: #9f2b68;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.usuario-card {
+  background: #fff;
+  padding: 18px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px #00000015;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/auth.css">
+    <title>Iniciar sesion / Registrarse</title>
+</head>
+<body>
+    <section class="auth-container">
+        <div class="auth-card">
+      
+          <h2 id="auth-title">Crear cuenta</h2>
+      
+          <!-- Toggle -->
+          <div class="auth-toggle">
+            <button class="active" id="btn-register">Registrarse</button>
+            <button id="btn-login">Iniciar sesión</button>
+          </div>
+      
+          <form id="auth-form">
+      
+            <input type="text" id="nombre" placeholder="Nombre completo" required>
+      
+            <input type="email" id="email" placeholder="Email" required>
+      
+            <input type="password" id="password" placeholder="Contraseña" required>
+      
+            <!-- Solo registro -->
+            <div id="tipo-usuario">
+              <label>¿Quién sos?</label>
+              <select id="rol">
+                <option value="embarazada">Embarazada</option>
+                <option value="mama">Mamá</option>
+                <option value="usuario">Usuario/a</option>
+              </select>
+            </div>
+      
+            <button type="submit" class="btn-primary">Continuar</button>
+          </form>
+      
+        </div>
+      </section>   
+      <script src="../js/auth.js" defer></script> 
+</body>
+</html>

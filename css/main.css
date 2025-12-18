@@ -1,0 +1,174 @@
+/* -------------------- */
+/* BASE GENERAL */
+/* -------------------- */
+
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: #f7f4fb;
+    color: #333;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  /* -------------------- */
+  /* HEADER */
+  /* -------------------- */
+  
+  .main-header {
+    background: #baa1de;
+    color: #fff;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .main-header h1 {
+    margin: 0;
+    font-size: 1.6rem;
+  }
+  
+  .main-header button {
+    background: #9f2b68;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  
+  /* -------------------- */
+  /* NAV */
+  /* -------------------- */
+  
+  .main-nav {
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    padding: 12px 0;
+    box-shadow: 0 4px 10px #00000010;
+  }
+  
+  .main-nav a {
+    font-weight: 500;
+    color: #555;
+  }
+  
+  .main-nav a.active {
+    color: #9f2b68;
+  }
+  
+  /* -------------------- */
+  /* HOME */
+  /* -------------------- */
+  
+  .main-content {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  
+  .welcome-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px #00000010;
+    margin-bottom: 40px;
+  }
+  
+  .welcome-card h2 {
+    margin-top: 0;
+    color: #9f2b68;
+  }
+  
+  /* Grid */
+  
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+  }
+  
+  .info-card {
+    background: #fff;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px #00000010;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .info-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px #00000015;
+  }
+  
+  .info-card h3 {
+    color: #9f2b68;
+  }
+  
+  .info-card a {
+    display: inline-block;
+    margin-top: 12px;
+    font-weight: 600;
+    color: #9f2b68;
+  }
+  
+  /* -------------------- */
+  /* ETAPAS */
+  /* Embarazo + Maternidad */
+  /* -------------------- */
+  
+  .embarazo-container,
+  .maternidad-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  
+  .intro {
+    background: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px #00000010;
+    margin-bottom: 40px;
+  }
+  
+  .intro h2 {
+    margin-top: 0;
+    color: #9f2b68;
+  }
+  
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+  }
+  
+  .card {
+    background: #fff;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px #00000010;
+  }
+  
+  .card h3 {
+    color: #9f2b68;
+  }
+  
+  /* -------------------- */
+  /* FOOTER */
+  /* -------------------- */
+  
+  .main-footer {
+    margin-top: 60px;
+    padding: 20px;
+    text-align: center;
+    background: #eee;
+    font-size: 0.9rem;
+  }
+  

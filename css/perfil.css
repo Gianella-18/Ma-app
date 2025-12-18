@@ -1,0 +1,95 @@
+body {
+  background: #f8f9fa;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Contenedor principal */
+.perfil-container {
+  max-width: 420px;
+  margin: 80px auto;
+  background: #ffffff;
+  padding: 30px 25px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px #00000015;
+  text-align: center;
+}
+
+/* Título */
+.perfil-container h1 {
+  color: #9f2b68;
+  margin-bottom: 25px;
+}
+
+/* Info del usuario */
+.perfil-info {
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.perfil-info p {
+  margin-bottom: 12px;
+  font-size: 15px;
+  color: #444;
+}
+
+.perfil-info strong {
+  color: #333;
+}
+
+/* Contenido dinámico por rol */
+#contenido-dinamico {
+  background: #f8f9fa;
+  padding: 18px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+}
+
+#contenido-dinamico h2 {
+  color: #9f2b68;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+#contenido-dinamico p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+#contenido-dinamico a {
+  display: inline-block;
+  margin-top: 8px;
+  color: #9f2b68;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+#contenido-dinamico a:hover {
+  text-decoration: underline;
+}
+
+/* Botón logout */
+#logout {
+  background: #9f2b68;
+  color: #ffffff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 22px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+#logout:hover {
+  background: #a1bea0;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .perfil-container {
+    margin: 40px 15px;
+    padding: 25px 20px;
+  }
+}
