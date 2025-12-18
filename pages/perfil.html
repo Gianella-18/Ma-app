@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Perfil | Má!</title>
+
+  <link rel="stylesheet" href="../css/perfil.css">
+</head>
+
+<body>
+
+<!-- Seguridad -->
+<script src="../js/session.js"></script>
+<script>
+  requireAuth();
+</script>
+
+<header class="perfil-header">
+  <h1>Má!</h1>
+  <nav>
+    <a href="home.html">Inicio</a>
+    <a href="comunidad.html">Comunidad</a>
+    <a href="tienda.html">Tienda</a>
+    <a href="perfil.html" class="active">Mi perfil</a>
+  </nav>
+</header>
+
+<main class="perfil-container">
+
+  <section class="perfil-card">
+    <h2>Mi Perfil</h2>
+
+    <p><strong>Nombre:</strong> <span id="perfil-nombre"></span></p>
+    <p><strong>Email:</strong> <span id="perfil-email"></span></p>
+    <p><strong>Perfil:</strong> <span id="perfil-rol"></span></p>
+  </section>
+
+  <section class="perfil-extra" id="contenido-dinamico"></section>
+
+  <button id="logout" class="btn-logout">Cerrar sesión</button>
+
+</main>
+
+<!-- Lógica -->
+<script src="../js/user.js"></script>
+
+</body>
+</html>

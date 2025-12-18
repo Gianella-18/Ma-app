@@ -9,532 +9,204 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../css/tienda.css">
 
-    <!-- Bootstrap Icons (para los íconos del footer y Nosotros) -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
+    <style>
+        /* Modal carrito */
+        .modal-carrito {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content-carrito {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 10px 0;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+        .cart-item-img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+        .cart-item-info {
+            flex: 1;
+        }
+        .btn-eliminar {
+            background: red;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .btn-agregado {
+            background-color: #ccc !important;
+            cursor: not-allowed;
+            color: #666;
+        }
+
+        /* Botón flotante carrito */
+        .cart-flotante {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #9f2b68;
+            color: #fff;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1001;
+            font-size: 1.5rem;
+        }
+        .cart-flotante span {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: yellow;
+            color: #000;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-flotante.animated {
+            animation: bounce 0.4s ease;
+        }
+
+        @keyframes bounce {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .producto-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+        }
+        .producto-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .filtros-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .filtro {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ddd;
+            cursor: pointer;
+        }
+        .filtro.active {
+            background-color: #9f2b68;
+            color: #fff;
+        }
+    </style>
 </head>
-
 <body>
-
     <!-- NAVBAR -->
     <header>
-      <nav class="navbar">
-        <a class="navbar-brand" href="../index.html">
-          <img src="../img/ma.png" alt="Logo Ma!" class="logo-navbar">
-        </a>    
-        <ul class="nav-links">
-            <li><a href="../index.html">Inicio</a></li>
-            <li><a href="./embarazo.html">Embarazo</a></li>
-            <li><a href="./maternidad.html">Maternidad</a></li>
-            <li><a href="./comunidad.html">Comunidad</a></li>
-            <li><a href="./tienda.html">Tienda</a></li>    
-        </ul>
-    
-        <!-- MENÚ HAMBURGUESA -->
-        <div class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-    </nav>
-    
+        <nav class="navbar">
+            <a class="navbar-brand" href="../index.html">
+                <img src="../img/ma.png" alt="Logo Ma!" class="logo-navbar">
+            </a>    
+            <ul class="nav-links">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="./embarazo.html">Embarazo</a></li>
+                <li><a href="./maternidad.html">Maternidad</a></li>
+                <li><a href="./comunidad.html">Comunidad</a></li>
+                <li><a href="./tienda.html">Tienda</a></li>    
+            </ul>
+
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
     </header>
-
-    <!-- HERO -->
-    <section id="inicio" class="hero-tie">
-        <div class="hero-content">
-            <!-- <h1>Bienvenida a <strong style="
-                color: #a1bea0">Ma!</strong></h1> -->
-<!---->
-            <div>
-                <h1></h1>
+        <!-- HERO -->
+        <section id="inicio" class="hero-tie">
+            <div class="hero-content">
+                <div><h1></h1></div>
+                <p></p>
             </div>
-            
-            <p></p>
-        </div>
-    </section>
-
-    <!-- FILTROS -->
-    <section class="filtros-section">
-        <div class="filtros-container">
-
-            <button class="filtro active">Todos</button>
-            <button class="filtro">Ropa / Calzado</button>
-            <button class="filtro">Lactancia</button>
-            <button class="filtro">Porteo</button>
-            <button class="filtro">Cochecitos / Accesorios</button>
-            <button class="filtro">Cunas</button>
-            <button class="filtro">Mecedoras</button>
-            <button class="filtro">Diversión</button>
-            <button class="filtro">Sillitas de comer</button>
-
+        </section>
+        <section class="filtros-carrito-container">
+            <div class="filtros-section filtros-container">
+              <button class="filtro active" data-category="todos">Todos</button>
+              <button class="filtro" data-category="ropa">Ropa / Calzado</button>
+              <button class="filtro" data-category="lactancia">Lactancia</button>
+              <button class="filtro" data-category="porteo">Porteo</button>
+              <button class="filtro" data-category="cochecitos">Cochecitos / Accesorios</button>
+              <button class="filtro" data-category="cunas">Cunas</button>
+              <button class="filtro" data-category="mecedoras">Mecedoras</button>
+              <button class="filtro" data-category="diversion">Diversión</button>
+              <button class="filtro" data-category="sillitas">Sillitas de comer</button>
+            </div>
+          
+            <!-- Carrito al lado derecho -->
             <div class="cart-icon">
-                <i class="bi bi-cart2"></i>
-                <span class="cart-count">0</span>
+              <i class="bi bi-cart-fill"></i>
+              <span class="cart-count">0</span>
             </div>
-
-        </div>
-    </section>
-
-    <!-- LISTA DE PRODUCTOS -->
-    <section class="productos-section">
-
-        <div class="productos-grid">
-
-            <!-- PRODUCTO 1 -->
-            <div class="producto-card">
-                <div class="producto-img">
-                    <img src="../img/tienda/ropa-calzado/osito-gap.webp" alt="Osito de invierno GAP">
-                </div>
-                <h3 class="titulo-producto">Osito de invierno - GAP</h3>
-                <p class="publicado">Publicado por: Martina</p>
-                <p class="precio">$26000</p>
-
-                <button class="btn-agregar">Agregar</button>
-            </div>
-
-            <!-- PRODUCTO 2 -->
-            <div class="producto-card">
-                <div class="producto-img">
-                    <img src="../img/tienda/ropa-calzado/osito-hm.webp" alt="Osito H&M">
-                </div>
-                <h3 class="titulo-producto">Osito de invierno - H&M</h3>
-                <p class="publicado">Publicado por: Martina</p>
-                <p class="precio">$23000</p>
-
-                <button class="btn-agregar">Agregar</button>
-            </div>
-
-            <!-- PRODUCTO 3 -->
-            <div class="producto-card">
-                <div class="producto-img">
-                    <img src="../img/tienda/ropa-calzado/pack-ositos.webp" alt="Pack Carter's">
-                </div>
-                <h3 class="titulo-producto">Pack 2 Ositos - Carter's</h3>
-                <p class="publicado">Publicado por: Martina</p>
-                <p class="precio">$29000</p>
-
-                <button class="btn-agregar">Agregar</button>
-            </div>
-
- <!-- PRODUCTO 4 -->
- <div class="producto-card">
-    <div class="producto-img">
-        <img src="../img/tienda/ropa-calzado/pack3-bodies.webp" alt="Pack 3 Bodies - Cheeky">
-    </div>
-    <h3 class="titulo-producto">"Pack 3 Bodies - Cheeky</h3>
-    <p class="publicado">Publicado por: Valentina</p>
-    <p class="precio">$17000</p>
-
-    <button class="btn-agregar">Agregar</button>
-</div>
-
-<!-- PRODUCTO 5 -->
-<div class="producto-card">
-    <div class="producto-img">
-        <img src="../img/tienda/ropa-calzado/pack4-bodies.webp" alt="Pack 4 Bodies animales - Buditas">
-    </div>
-    <h3 class="titulo-producto">Pack 4 Bodies animales - Buditas</h3>
-    <p class="publicado">Publicado por: Valentina</p>
-    <p class="precio">$14000</p>
-
-    <button class="btn-agregar">Agregar</button>
-</div>
-
-<!-- PRODUCTO 6 -->
-<div class="producto-card">
-    <div class="producto-img">
-        <img src="../img/tienda/ropa-calzado/bodyflor-la.webp" alt="Body flores - Little Akiabara">
-    </div>
-    <h3 class="titulo-producto">Body flores - Little Akiabara</h3>
-    <p class="publicado">Publicado por: Julieta</p>
-    <p class="precio">$12000</p>
-
-    <button class="btn-agregar">Agregar</button>
-</div>
-
- <!-- PRODUCTO 7 -->
- <div class="producto-card">
-    <div class="producto-img">
-        <img src="../img/tienda/ropa-calzado/enterito-la.webp" alt="Enterito flores - Little Akiabara">
-    </div>
-    <h3 class="titulo-producto">Enterito flores - Little Akiabara</h3>
-    <p class="publicado">Publicado por: Martina</p>
-    <p class="precio">$17000</p>
-
-    <button class="btn-agregar">Agregar</button>
-</div>
-
-<!-- PRODUCTO 8 -->
-<div class="producto-card">
-    <div class="producto-img">
-        <img src="../img/tienda/lactancia/almohadon.jpg" alt="Almohadón de lactancia - Mamas and Papas">
-    </div>
-    <h3 class="titulo-producto">Almohadón de lactancia - Mamas and Papas</h3>
-    <p class="publicado">Publicado por: Malena</p>
-    <p class="precio">$45000</p>
-
-    <button class="btn-agregar">Agregar</button>
-</div>
-
-<!-- PRODUCTO 9 -->
-<div class="producto-card">
-    <div class="producto-img">
-        <img src="../img/tienda/lactancia/almohadon-amamantar.jpg" alt="Almohadón para amamantar">
-    </div>
-    <h3 class="titulo-producto">Almohadón para amamantar</h3>
-    <p class="publicado">Publicado por: Raquel</p>
-    <p class="precio">$20000</p>
-
-    <button class="btn-agregar">Agregar</button>
-</div>
-
-<!-- PRODUCTO 10 -->
-<div class="producto-card">
-    <div class="producto-img">
-        <img src="../img/tienda/porteo/mochila-love.webp" alt="Mochila porta bebé 4004 - Love">
-    </div>
-    <h3 class="titulo-producto">Mochila porta bebé 4004 - Love</h3>
-    <p class="publicado">Publicado por: Mora</p>
-    <p class="precio">$27000</p>
-
-    <button class="btn-agregar">Agregar</button>
-</div>
-
-<!-- PRODUCTO 11 -->
-<div class="producto-card">
-    <div class="producto-img">
-        <img src="../img/tienda/porteo/mochila-duck1.jpg" alt="Mochila porta bebé Gera - Duck">
-    </div>
-    <h3 class="titulo-producto">Mochila porta bebé Gera - Duck</h3>
-    <p class="publicado">Publicado por: Virginia</p>
-    <p class="precio">$25000</p>
-
-    <button class="btn-agregar">Agregar</button>
-</div>
-
-<!-- PRODUCTO 12 -->
-<div class="producto-card">
-    <div class="producto-img">
-        <img src="../img/tienda/cochecitos-accesorios/huevito-kiev.jpg" alt="Huevito Kiev 2023 - Carestino">
-    </div>
-    <h3 class="titulo-producto">Huevito Kiev 2023 - Carestino</h3>
-    <p class="publicado">Publicado por: Rocío</p>
-    <p class="precio">$57000</p>
-
-    <button class="btn-agregar">Agregar</button>
-</div>
-
-<!-- PRODUCTO 13 -->
-<div class="producto-card">
-    <div class="producto-img">
-        <img src="../img/tienda/cochecitos-accesorios/funda-huevito.jpg" alt="Funda de huevito - Skip Hop">
-    </div>
-    <h3 class="titulo-producto">Funda de huevito - Skip Hop</h3>
-    <p class="publicado">Publicado por: Agustina</p>
-    <p class="precio">$34000</p>
-
-    <button class="btn-agregar">Agregar</button>
-</div>
-
-<!-- PRODUCTO 14 -->
-<div class="producto-card">
-    <div class="producto-img">
-        <img src="../img/tienda/cochecitos-accesorios/cochecito-cloud.jpg" alt="Cochecito Kolcraft 2019 - Cloud">
-    </div>
-    <h3 class="titulo-producto">Cochecito Kolcraft 2019 - Cloud</h3>
-    <p class="publicado">Publicado por: Jimena</p>
-    <p class="precio">$70000</p>
-
-    <button class="btn-agregar">Agregar</button>
-</div>
-
-<!-- PRODUCTO 15 -->
-<div class="producto-card">
-    <div class="producto-img">
-        <img src="../img/tienda/cochecitos-accesorios/cochecito-megababy.jpg" alt="Cochecito Elite Premium 2023 - Mega Baby">
-    </div>
-    <h3 class="titulo-producto">Cochecito Elite Premium 2023 - Mega Baby</h3>
-    <p class="publicado">Publicado por: Macarena</p>
-    <p class="precio">$203000</p>
-
-    <button class="btn-agregar">Agregar</button>
-</div>
-
-<!-- PRODUCTO 16 -->
-<div class="producto-card">
-    <div class="producto-img">
-        <img src="../img/tienda/cochecitos-accesorios/coche-aston.jpg" alt="Cochecito Aston - Premium Baby">
-    </div>
-    <h3 class="titulo-producto">Cochecito Aston - Premium Baby</h3>
-    <p class="publicado">Publicado por: Rosario</p>
-    <p class="precio">$205000</p>
-
-    <button class="btn-agregar">Agregar</button>
-</div>
-
-<!-- PRODUCTO 17 -->
-<div class="producto-card">
-    <div class="producto-img">
-        <img src="../img/tienda/cochecitos-accesorios/patineta.jpg" alt="Patineta para cochecito - Britax">
-    </div>
-    <h3 class="titulo-producto">Patineta para cochecito - Britax</h3>
-    <p class="publicado">Publicado por: Paloma</p>
-    <p class="precio">$57000</p>
-
-    <button class="btn-agregar">Agregar</button>
-</div>
-
-<!-- PRODUCTO 18 -->
-<div class="producto-card">
-    <div class="producto-img">
-        <img src="../img/tienda/cunas/cuna-melamina.jpg" alt="Cuna colecho (sin uso) melamina">
-    </div>
-    <h3 class="titulo-producto">Cuna colecho (sin uso) melamina</h3>
-    <p class="publicado">Publicado por: Camila</p>
-    <p class="precio">$100000</p>
-
-    <button class="btn-agregar">Agregar</button>
-</div>
-
-<!-- PRODUCTO 19 -->
-<div class="producto-card">
-    <div class="producto-img">
-        <img src="../img/tienda/cunas/cuna-pino.jpg" alt="Cuna colecho pino laqueada">
-    </div>
-    <h3 class="titulo-producto">Cuna colecho pino laqueada</h3>
-    <p class="publicado">Publicado por: Josefina</p>
-    <p class="precio">$92000</p>
-
-    <button class="btn-agregar">Agregar</button>
-</div>
-
-<!-- PRODUCTO 20 -->
-<div class="producto-card">
-    <div class="producto-img">
-        <img src="../img/tienda/cunas/cuna-escandinava.jpg" alt="Cuna Charriot Paraiso escandinava">
-    </div>
-    <h3 class="titulo-producto">Cuna Charriot Paraiso escandinava</h3>
-    <p class="publicado">Publicado por: Victoria</p>
-    <p class="precio">$102000</p>
-
-    <button class="btn-agregar">Agregar</button>
-</div>
-
-<!-- PRODUCTO 21 -->
-<div class="producto-card">
-    <div class="producto-img">
-        <img src="../img/tienda/cunas/cuna-maciza.jpg" alt="Cuna colecho madera maciza">
-    </div>
-    <h3 class="titulo-producto">Cuna colecho madera maciza</h3>
-    <p class="publicado">Publicado por: Milagros</p>
-    <p class="precio">$86000</p>
-
-    <button class="btn-agregar">Agregar</button>
-</div>
-
-<!-- PRODUCTO 22 -->
-<div class="producto-card">
-    <div class="producto-img">
-        <img src="../img/tienda/cunas/practicuna-4moms.jpg" alt="Practicuna Breeze Go - 4Moms">
-    </div>
-    <h3 class="titulo-producto">Practicuna Breeze Go - 4Moms</h3>
-    <p class="publicado">Publicado por: Florencia</p>
-    <p class="precio">$85000</p>
-
-    <button class="btn-agregar">Agregar</button>
-</div>
-
-<!-- PRODUCTO 23 -->
-<div class="producto-card">
-    <div class="producto-img">
-        <img src="../img/tienda/cunas/practicuna-graco.jpg" alt="Practicuna Pack and Play - Graco">
-    </div>
-    <h3 class="titulo-producto">Practicuna Pack and Play - Graco</h3>
-    <p class="publicado">Publicado por: Abril</p>
-    <p class="precio">$69000</p>
-
-    <button class="btn-agregar">Agregar</button>
-</div>
-
-<!-- PRODUCTO 24 -->
-<div class="producto-card">
-    <div class="producto-img">
-        <img src="../img/tienda/cunas/cuna-joie.jpg" alt="Practicuna Illusion - Joie">
-    </div>
-    <h3 class="titulo-producto">Practicuna Illusion - Joie</h3>
-    <p class="publicado">Publicado por: Katherine</p>
-    <p class="precio">$92000</p>
-
-    <button class="btn-agregar">Agregar</button>
-</div>
-
-<!-- PRODUCTO 25 -->
-<div class="producto-card">
-    <div class="producto-img">
-        <img src="../img/tienda/mecedoras/mecedora-fisher.jpg" alt="Silla mecedora - Bebesit">
-    </div>
-    <h3 class="titulo-producto">Silla mecedora - Bebesit</h3>
-    <p class="publicado">Publicado por: Isabella</p>
-    <p class="precio">$51000</p>
-
-    <button class="btn-agregar">Agregar</button>
-</div>
-
-<!-- PRODUCTO 26 -->
-<div class="producto-card">
-    <div class="producto-img">
-        <img src="../img/tienda/mecedoras/mecedora-fel.jpg" alt="Mecedora - Felcraft">
-    </div>
-    <h3 class="titulo-producto">Mecedora - Felcraft</h3>
-    <p class="publicado">Publicado por: María</p>
-    <p class="precio">$39000</p>
-
-    <button class="btn-agregar">Agregar</button>
-</div>
-
-<!-- PRODUCTO 27 -->
-<div class="producto-card">
-    <div class="producto-img">
-        <img src="../img/tienda/mecedoras/silla-baby.jpg" alt="Silla mecedora - Baby Innovation">
-    </div>
-    <h3 class="titulo-producto">Silla mecedora - Baby Innovation</h3>
-    <p class="publicado">Publicado por: Antonella</p>
-    <p class="precio">$45000</p>
-
-    <button class="btn-agregar">Agregar</button>
-</div>
-
-<!-- PRODUCTO 28 -->
-<div class="producto-card">
-    <div class="producto-img">
-        <img src="../img/tienda/mecedoras/silla-bebesit.jpg" alt="Mecedora - Fisher Price">
-    </div>
-    <h3 class="titulo-producto">Mecedora - Fisher Price</h3>
-    <p class="publicado">Publicado por: Daniela</p>
-    <p class="precio">$72000</p>
-
-    <button class="btn-agregar">Agregar</button>
-</div>
-
-<!-- PRODUCTO 29 -->
-<div class="producto-card">
-    <div class="producto-img">
-        <img src="../img/tienda/diversion/movil.jpg" alt="Móvil cunero (sin uso)">
-    </div>
-    <h3 class="titulo-producto">Móvil cunero (sin uso)</h3>
-    <p class="publicado">Publicado por: Ornella</p>
-    <p class="precio">$29000</p>
-
-    <button class="btn-agregar">Agregar</button>
-</div>
-
-<!-- PRODUCTO 30 -->
-<div class="producto-card">
-    <div class="producto-img">
-        <img src="../img/tienda/diversion/playcenter.jpg" alt="Play center - B Kids">
-    </div>
-    <h3 class="titulo-producto">Play center - B Kids</h3>
-    <p class="publicado">Publicado por: Alicia</p>
-    <p class="precio">$11000</p>
-
-    <button class="btn-agregar">Agregar</button>
-</div>
-
-<!-- PRODUCTO 31 -->
-<div class="producto-card">
-    <div class="producto-img">
-        <img src="../img/tienda/diversion/manta.jpg" alt="Play center - B Kids">
-    </div>
-    <h3 class="titulo-producto">Manta didáctica 3 en 1 - Ok Baby</h3>
-    <p class="publicado">Publicado por: Bárbara</p>
-    <p class="precio">$31000</p>
-
-    <button class="btn-agregar">Agregar</button>
-</div>
-
-<!-- PRODUCTO 32 -->
-<div class="producto-card">
-    <div class="producto-img">
-        <img src="../img/tienda/diversion/gimnasio.webp" alt="Gimnasio - Fisher Price">
-    </div>
-    <h3 class="titulo-producto">Gimnasio - Fisher Price</h3>
-    <p class="publicado">Publicado por: Candela</p>
-    <p class="precio">$33000</p>
-
-    <button class="btn-agregar">Agregar</button>
-</div>
-
-<!-- PRODUCTO 32 -->
-<div class="producto-card">
-    <div class="producto-img">
-        <img src="../img/tienda/diversion/pelotero-fisher.jpg" alt="Pelotero - Fisher Price">
-    </div>
-    <h3 class="titulo-producto">Pelotero - Fisher Price</h3>
-    <p class="publicado">Publicado por: Emilia</p>
-    <p class="precio">$39000</p>
-
-    <button class="btn-agregar">Agregar</button>
-</div>
-
-<!-- PRODUCTO 33 -->
-<div class="producto-card">
-    <div class="producto-img">
-        <img src="../img/tienda/diversion/pelotero-fel.jpg" alt="Pelotero 3 en 1- Felcraft">
-    </div>
-    <h3 class="titulo-producto">Pelotero 3 en 1- Felcraft</h3>
-    <p class="publicado">Publicado por: Giselle</p>
-    <p class="precio">$45000</p>
-
-    <button class="btn-agregar">Agregar</button>
-</div>
-
-<!-- PRODUCTO 34 -->
-<div class="producto-card">
-    <div class="producto-img">
-        <img src="../img/tienda/sillitas de comer/silla-baby.jpg" alt="Silla de comer 2 en 1 - Baby Pops">
-    </div>
-    <h3 class="titulo-producto">Silla de comer 2 en 1 - Baby Pops</h3>
-    <p class="publicado">Publicado por: Lucero</p>
-    <p class="precio">$65000</p>
-
-    <button class="btn-agregar">Agregar</button>
-</div>
-
-<!-- PRODUCTO 34 -->
-<div class="producto-card">
-    <div class="producto-img">
-        <img src="../img/tienda/sillitas de comer/silla-glee.jpg" alt="Silla de comer Booster - Glee">
-    </div>
-    <h3 class="titulo-producto">Silla de comer Booster - Glee</h3>
-    <p class="publicado">Publicado por: Ludmila</p>
-    <p class="precio">$25000</p>
-
-    <button class="btn-agregar">Agregar</button>
-</div>
-        </div>
-
-    </section>
-
-    <div id="modal-carrito" class="modal-carrito">
-        <div class="modal-content-carrito">
-            <span class="close-modal">&times;</span>
-            <h2>Tu carrito</h2>
-    
-            <div class="carrito-items"></div>
-    
-            <div class="carrito-total">
-                <p>Total: $<span id="total-pagar">0</span></p>
-                <button id="btn-checkout" class="btn-procesar">Proceder al pago</button>
-            </div>
-        </div>
-    </div>
-    
-
-
-    <!-- FOOTER FINAL -->
+          </section>
+          
+    <!-- FOOTER -->
     <footer class="bg-light pt-4 mt-5 footer">
         <div class="container">
             <div class="footer-flex">
@@ -545,7 +217,6 @@
                     <li><a href="./comunidad.html">Comunidad</a></li>
                     <li><a href="./tienda.html">Tienda</a></li>
                 </ul>
-
                 <div class="footer-social">
                     <a href="#"><i class="bi bi-instagram"></i></a>
                     <a href="#"><i class="bi bi-facebook"></i></a>
@@ -553,9 +224,7 @@
                     <a href="#"><i class="bi bi-tiktok"></i></a>
                 </div>
             </div>
-
             <hr />
-
             <div class="footer-bottom">
                 <a href="#">Términos y Condiciones</a> ·
                 <a href="#">Política de Privacidad</a><br />
@@ -564,202 +233,7 @@
         </div>
     </footer>
 
-    <!-- SCRIPT -->
-    <script src="../script.js"></script>
-
-    <script>
-        // ==========================
-        //   FILTRO DINÁMICO (OPCIÓN B)
-        // ==========================
-        const botonesFiltro = document.querySelectorAll(".filtro");
-        const productos = document.querySelectorAll(".producto-card");
-        
-        // Diccionario de categorías → palabras clave en el título
-        const categorias = {
-            "Ropa / Calzado": ["osito", "body", "enterito", "bodies", "ropa", "calzado"],
-            "Lactancia": ["lactancia", "amamantar"],
-            "Porteo": ["mochila", "porteo"],
-            "Cochecitos / Accesorios": ["cochecito", "huevito", "funda", "patineta", "accesorios"],
-            "Cunas": ["cuna", "colecho", "practicuna"],
-            "Mecedoras": ["mecedora"],
-            "Diversión": ["juguete"],
-            "Sillitas de comer": ["silla", "sillita"]
-        };
-        
-        botonesFiltro.forEach(boton => {
-            boton.addEventListener("click", () => {
-        
-                // actualizar estado activo
-                botonesFiltro.forEach(b => b.classList.remove("active"));
-                boton.classList.add("active");
-        
-                const categoria = boton.textContent.trim();
-        
-                if (categoria === "Todos") {
-                    productos.forEach(p => p.style.display = "block");
-                    return;
-                }
-        
-                const palabrasClave = categorias[categoria];
-        
-                productos.forEach(prod => {
-                    const titulo = prod.querySelector(".titulo-producto").textContent.toLowerCase();
-                    const coincide = palabrasClave.some(p => titulo.includes(p));
-                    prod.style.display = coincide ? "block" : "none";
-                });
-            });
-        });
-        
-        
-        // ==========================
-        //   CARRITO + MODAL
-        // ==========================
-        let carrito = JSON.parse(sessionStorage.getItem("carrito")) || [];
-        
-        const botonesAgregar = document.querySelectorAll(".btn-agregar");
-        const cartCount = document.querySelector(".cart-count");
-        const cartModal = document.getElementById("cart-modal");
-        const closeCart = document.querySelector(".close-cart");
-        const cartIcon = document.querySelector(".cart-icon");
-        const cartItemsContainer = document.querySelector(".cart-items");
-        const totalPriceElement = document.querySelector(".total-price");
-        
-        function actualizarContador() {
-            cartCount.textContent = carrito.length;
-        }
-        function guardarCarrito() {
-            sessionStorage.setItem("carrito", JSON.stringify(carrito));
-        }
-        function abrirCarrito() {
-            renderCarrito();
-            cartModal.style.display = "flex";
-        }
-        function cerrarCarrito() {
-            cartModal.style.display = "none";
-        }
-        
-        cartIcon.addEventListener("click", abrirCarrito);
-        closeCart.addEventListener("click", cerrarCarrito);
-        window.addEventListener("click", (e) => {
-            if (e.target === cartModal) cerrarCarrito();
-        });
-        
-        // AGREGAR PRODUCTO (sin duplicados)
-botonesAgregar.forEach((btn) => {
-    btn.addEventListener("click", () => {
-        const card = btn.closest(".producto-card");
-        const titulo = card.querySelector(".titulo-producto").textContent;
-        const precio = card.querySelector(".precio").textContent.replace("$", "").trim();
-        const img = card.querySelector("img").src;
-
-        // Verificar si YA está en el carrito
-        const existe = carrito.some(item => item.titulo === titulo);
-
-        if (existe) {
-            // mensaje opcional
-            alert("Este producto ya está en tu carrito.");
-            return;
-        }
-
-        // Agregar solo si NO existe
-        carrito.push({ titulo, precio: Number(precio), img });
-
-        guardarCarrito();
-        actualizarContador();
-    });
-});
-
-        
-        // MOSTRAR CARRITO
-        function renderCarrito() {
-            cartItemsContainer.innerHTML = "";
-        
-            if (carrito.length === 0) {
-                cartItemsContainer.innerHTML = "<p>Tu carrito está vacío.</p>";
-                totalPriceElement.textContent = "$0";
-                return;
-            }
-        
-            carrito.forEach((item, i) => {
-                const div = document.createElement("div");
-                div.classList.add("cart-item");
-        
-                div.innerHTML = `
-                    <img src="${item.img}" class="cart-item-img">
-                    <div class="cart-item-info">
-                        <p>${item.titulo}</p>
-                        <strong>$${item.precio}</strong>
-                    </div>
-                    <button class="btn-eliminar" data-index="${i}">X</button>
-                `;
-        
-                cartItemsContainer.appendChild(div);
-            });
-        
-            const total = carrito.reduce((acc, item) => acc + item.precio, 0);
-            totalPriceElement.textContent = "$" + total;
-        
-            // ELIMINAR PRODUCTO
-            document.querySelectorAll(".btn-eliminar").forEach(btn => {
-                btn.addEventListener("click", () => {
-                    const index = btn.dataset.index;
-                    carrito.splice(index, 1);
-                    guardarCarrito();
-                    actualizarContador();
-                    renderCarrito();
-                });
-            });
-        }
-        
-        // VACIAR CARRITO
-        document.querySelector(".btn-vaciar").addEventListener("click", () => {
-            carrito = [];
-            guardarCarrito();
-            actualizarContador();
-            renderCarrito();
-        });
-        
-
-        function mostrarToast(msg) {
-    const toast = document.getElementById("toast");
-    toast.textContent = msg;
-    toast.classList.add("show");
-
-    setTimeout(() => {
-        toast.classList.remove("show");
-    }, 2500);
-}
-botonesAgregar.forEach((btn) => {
-    btn.addEventListener("click", () => {
-        const card = btn.closest(".producto-card");
-        const titulo = card.querySelector(".titulo-producto").textContent;
-        const precio = card.querySelector(".precio").textContent.replace("$", "").trim();
-        const img = card.querySelector("img").src;
-
-        const existe = carrito.some(item => item.titulo === titulo);
-
-        if (existe) {
-            mostrarToast("Este producto ya está en el carrito");
-            return;
-        }
-
-        carrito.push({ titulo, precio: Number(precio), img });
-        guardarCarrito();
-        actualizarContador();
-        mostrarToast("Producto agregado al carrito");
-    });
-});
-
-
-        // FINALIZAR COMPRA (placeholder)
-        document.querySelector(".btn-finalizar").addEventListener("click", () => {
-            alert("Gracias por tu compra. Esta función se conectará al checkout más adelante.");
-        });
-        
-        actualizarContador();
-        </script>
-
-        
-        
+    <!-- SCRIPTS -->
+    <script type="module" src="../tienda.js"></script>
 </body>
 </html>

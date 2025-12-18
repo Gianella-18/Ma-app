@@ -6,7 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../css/chat.css">
 </head>
+
 <body>
+
+<!-- Seguridad -->
+<script src="../js/session.js"></script>
+<script>
+  requireAuth();
+</script>
 
 <header class="chat-header">
   <a href="comunidad.html" class="back-btn">← Volver</a>
@@ -31,6 +38,8 @@
 
 </main>
 
+<!-- Lógica del chat (UNA SOLA VEZ) -->
 <script src="../js/chat.js"></script>
+
 </body>
 </html>

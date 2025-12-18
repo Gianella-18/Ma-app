@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio | Má!</title>
+
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body>
+
+<!-- Seguridad -->
+<script src="../js/session.js"></script>
+<script>
+  requireAuth();
+</script>
+
+<header class="main-header">
+  <h1>Má!</h1>
+  <button onclick="logout()">Cerrar sesión</button>
+</header>
+
+<nav class="main-nav">
+  <a href="home.html" class="active">Inicio</a>
+  <a href="comunidad.html">Comunidad</a>
+  <a href="tienda.html">Tienda</a>
+  <a href="perfil.html">Mi perfil</a>
+</nav>
+
+<main class="main-content">
+
+  <section class="welcome-card" id="welcome"></section>
+
+  <section class="info-grid">
+    <div class="info-card">
+      <h3>Comunidad</h3>
+      <p>Participá, compartí experiencias y encontrá apoyo.</p>
+      <a href="comunidad.html">Ingresar</a>
+    </div>
+
+    <div class="info-card">
+      <h3>Tienda</h3>
+      <p>Comprá y vendé productos para vos y tu bebé.</p>
+      <a href="tienda.html">Ver productos</a>
+    </div>
+
+    <div class="info-card">
+      <h3>Mi perfil</h3>
+      <p>Gestioná tu información personal.</p>
+      <a href="perfil.html">Editar perfil</a>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  const session = JSON.parse(localStorage.getItem("session"));
+  const welcome = document.getElementById("welcome");
+
+  welcome.innerHTML = `
+    <h2>Hola, ${session.nombre}</h2>
+    <p>
+      Bienvenida a <strong>Má!</strong>.
+      ${getRolMessage(session.rol)}
+    </p>
+  `;
+
+  function getRolMessage(rol) {
+    if (rol === "embarazada") {
+      return "Acompañamos tu embarazo en cada etapa.";
+    }
+    if (rol === "mama") {
+      return "Te acompañamos en la crianza y el cuidado de tu bebé.";
+    }
+    return "Explorá la comunidad y los recursos disponibles.";
+  }
+</script>
+
+</body>
+</html>

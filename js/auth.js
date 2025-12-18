@@ -15,6 +15,29 @@ const tipoUsuario = document.getElementById("tipo-usuario");
 let mode = "register"; // register | login
 
 // --------------------
+// Admin por defecto (semilla)
+// --------------------
+function seedAdmin() {
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+
+  const adminExists = users.some(u => u.rol === "admin");
+
+  if (!adminExists) {
+    users.push({
+      id: 1,
+      nombre: "Administrador",
+      email: "admin@ma.com",
+      password: "admin123",
+      rol: "admin"
+    });
+
+    localStorage.setItem("users", JSON.stringify(users));
+  }
+}
+
+seedAdmin();
+
+// --------------------
 // Toggle Login / Register
 // --------------------
 btnRegister.addEventListener("click", () => {
@@ -46,9 +69,15 @@ form.addEventListener("submit", (e) => {
 
   let users = JSON.parse(localStorage.getItem("users")) || [];
 
+  // -------- REGISTER --------
   if (mode === "register") {
     const nombre = nombreInput.value.trim();
     const rol = rolSelect.value;
+
+    if (!nombre || !email || !password) {
+      alert("Completá todos los campos");
+      return;
+    }
 
     const exists = users.find(u => u.email === email);
     if (exists) {
@@ -66,11 +95,12 @@ form.addEventListener("submit", (e) => {
 
     users.push(newUser);
     localStorage.setItem("users", JSON.stringify(users));
-    localStorage.setItem("session", JSON.stringify(newUser));
 
-    redirectByRole(rol);
+    saveSession(newUser);
+    redirectByRole(newUser.rol);
   }
 
+  // -------- LOGIN --------
   if (mode === "login") {
     const user = users.find(
       u => u.email === email && u.password === password
@@ -81,29 +111,40 @@ form.addEventListener("submit", (e) => {
       return;
     }
 
-    localStorage.setItem("session", JSON.stringify(user));
+    saveSession(user);
     redirectByRole(user.rol);
   }
 });
+
+// --------------------
+// Session
+// --------------------
+function saveSession(user) {
+  const sessionUser = {
+    id: user.id,
+    nombre: user.nombre,
+    email: user.email,
+    rol: user.rol
+  };
+
+  localStorage.setItem("session", JSON.stringify(sessionUser));
+}
 
 // --------------------
 // Redirección por rol
 // --------------------
 function redirectByRole(rol) {
   switch (rol) {
-    case "embarazada":
-      window.location.href = "../pages/embarazo.html";
-      break;
-    case "mama":
-      window.location.href = "../pages/maternidad.html";
-      break;
-    case "usuario":
-      window.location.href = "../index.html";
-      break;
     case "admin":
       window.location.href = "../admin/dashboard.html";
       break;
+    case "embarazada":
+      window.location.href = "../user/embarazo.html";
+      break;
+    case "mama":
+      window.location.href = "../user/maternidad.html";
+      break;
     default:
-      window.location.href = "../index.html";
+      window.location.href = "../user/home.html";
   }
 }
